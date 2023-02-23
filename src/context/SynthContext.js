@@ -4,9 +4,14 @@ import { createContext } from 'react';
 const SynthContext = createContext();
 
 const SynthProvider = ({ children }) => {
-  const { amp, setAmp } = useState([]);
+  const [amplitude, setAmplitude] = useState(50);
+  const [frequency, setFrequency] = useState(50);
 
-  return <SynthContext.Provider value={{ amp, setAmp }}>{children}</SynthContext.Provider>;
+  return (
+    <SynthContext.Provider value={{ amplitude, setAmplitude, frequency, setFrequency }}>
+      {children}
+    </SynthContext.Provider>
+  );
 };
 
 const useSynthContext = () => {
@@ -18,4 +23,4 @@ const useSynthContext = () => {
   return context;
 };
 
-export { SynthProvider, useSynthContext };
+export { SynthProvider, SynthContext, useSynthContext };
