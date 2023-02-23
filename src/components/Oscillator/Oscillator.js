@@ -4,6 +4,7 @@ import './Oscillator.css';
 
 export default function Oscillator() {
   const { amplitude, setAmplitude, frequency, setFrequency } = useContext(SynthContext);
+
   console.log(frequency);
   console.log(amplitude);
   return (
