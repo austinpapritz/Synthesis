@@ -1,6 +1,15 @@
 .oscillator-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  /* gap: 15px; */
+}
+
+.oscillator-container input {
+  transform: rotate(270deg);
+}
+
+.oscillator-container hr {
+  transform: rotate(270deg);
 }

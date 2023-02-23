@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { SynthContext } from '../../context/SynthContext.js';
 import './Oscillator.css';
 
-export default function Oscillator() {
+export default function Oscillator({ oscNum }) {
   const { amplitude, setAmplitude, frequency, setFrequency } = useContext(SynthContext);
 
   console.log(frequency);
