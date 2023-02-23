@@ -5,6 +5,7 @@ const SynthContext = createContext();
 
 const SynthProvider = ({ children }) => {
   const { amp, setAmp } = useState([]);
+
   return <SynthContext.Provider value={{ amp, setAmp }}>{children}</SynthContext.Provider>;
 };
 
