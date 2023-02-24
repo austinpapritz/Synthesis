@@ -13,19 +13,17 @@ export default function Oscillator({ oscNum }) {
   let gui;
   let decibelVal;
 
-  // function droneSynth(amplitude) {
-  // convert the slider value to decibel value
-  if (amplitude === 0) {
-    decibelVal = -Infinity;
-  } else {
-    decibelVal = (amplitude / 100) * -1;
-  }
-  console.log('decibelVal', decibelVal);
-
-  function droneSynth(amp, freq) {
+  function droneSynth(amplitude, frequency) {
+    console.log(amplitude, frequency);
+    // convert the slider value to decibel value
+    if (amplitude === 0) {
+      decibelVal = -Infinity;
+    } else {
+      decibelVal = (amplitude / 100) * -1;
+    }
     osc1 = new Tone.Oscillator();
-    osc1.volume.value = amp;
-    osc1.frequency.value = freq;
+    osc1.volume.value = decibelVal;
+    osc1.frequency.value = frequency;
     osc1.start();
     osc1.toDestination();
   }
@@ -110,9 +108,33 @@ export default function Oscillator({ oscNum }) {
 
   return (
     <div className="oscillator-container">
-      <button onClick={() => droneSynth(-1, 250)}>Play drone at -1</button>
-      <button onClick={() => droneSynth(-12, 250)}>Play drone at -12</button>
-      <button onClick={() => droneSynth(-6, 130)}>Play drone at 130</button>
+      <button
+        onClick={() => {
+          setAmplitude(-1);
+          setFrequency(125);
+          droneSynth(amplitude, frequency);
+        }}
+      >
+        Play drone at -1
+      </button>
+      <button
+        onClick={() => {
+          setAmplitude(-6);
+          setFrequency(125);
+          droneSynth(amplitude, frequency);
+        }}
+      >
+        Play drone at -12
+      </button>
+      <button
+        onClick={() => {
+          setAmplitude(-6);
+          setFrequency(130);
+          droneSynth(amplitude, frequency);
+        }}
+      >
+        Play drone at 130
+      </button>
       <button onClick={() => droneSynth(-6, 1000)}>Play drone at 1000</button>
 
       <label>Amplitude</label>
