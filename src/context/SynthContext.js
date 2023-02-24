@@ -4,7 +4,7 @@ import { createContext } from 'react';
 const SynthContext = createContext();
 
 const SynthProvider = ({ children }) => {
-  const [amplitude, setAmplitude] = useState(50);
+  const [amplitude, setAmplitude] = useState(600);
   const [frequency, setFrequency] = useState(50);
 
   return (
