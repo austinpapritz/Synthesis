@@ -2,12 +2,11 @@ import React, { useContext } from 'react';
 import { SynthContext } from '../../context/SynthContext.js';
 import './Oscillator.css';
 
-import GUI from 'lil-gui';
+// import GUI from 'lil-gui';
 import * as Tone from 'tone';
 
 export default function Oscillator({ oscNum }) {
   const { amplitude, setAmplitude, frequency, setFrequency } = useContext(SynthContext);
-
   // let ready = false;
   let osc1;
   let waveForm;
@@ -23,14 +22,13 @@ export default function Oscillator({ oscNum }) {
   }
   console.log('decibelVal', decibelVal);
 
-  function droneSynth(value) {
+  function droneSynth(amp, freq) {
     osc1 = new Tone.Oscillator();
-    osc1.volume.value = value;
-    osc1.frequency.value = 261.625;
+    osc1.volume.value = amp;
+    osc1.frequency.value = freq;
     osc1.start();
     osc1.toDestination();
   }
-
   // osc2 = new Tone.Oscillator();
   // osc2.volume.value = -12;
   // osc2.frequency.value = 293.665;
@@ -112,9 +110,11 @@ export default function Oscillator({ oscNum }) {
 
   return (
     <div className="oscillator-container">
-      <button onClick={() => droneSynth(-1)}>Play drone at -1</button>
-      <button onClick={() => droneSynth(-12)}>Play drone at -12</button>
-      {/* <button onClick={() => droneSynth()}>Play</button> */}
+      <button onClick={() => droneSynth(-1, 250)}>Play drone at -1</button>
+      <button onClick={() => droneSynth(-12, 250)}>Play drone at -12</button>
+      <button onClick={() => droneSynth(-6, 130)}>Play drone at 130</button>
+      <button onClick={() => droneSynth(-6, 1000)}>Play drone at 1000</button>
+
       <label>Amplitude</label>
       <input
         id="amplitude"
@@ -130,8 +130,8 @@ export default function Oscillator({ oscNum }) {
         id="frequency"
         type="range"
         className="slider"
-        min="0"
-        max="100"
+        min="80"
+        max="1000"
         value={frequency}
         onChange={(e) => setFrequency(e.target.value)}
       ></input>

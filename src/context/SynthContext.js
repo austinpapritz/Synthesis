@@ -5,7 +5,7 @@ const SynthContext = createContext();
 
 const SynthProvider = ({ children }) => {
   const [amplitude, setAmplitude] = useState(600);
-  const [frequency, setFrequency] = useState(50);
+  const [frequency, setFrequency] = useState(250);
 
   return (
     <SynthContext.Provider value={{ amplitude, setAmplitude, frequency, setFrequency }}>
