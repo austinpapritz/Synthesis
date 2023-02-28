@@ -7,7 +7,7 @@ import Lfo from './components/lfo/Lfo.js';
 import { sine, sineLevel, sineLfo } from './components/oscillator/Oscillator.js';
 
 function App() {
-  const waveform = useRef;
+  const waveform = useRef(null);
   const waveformAnalyzer = new Tone.Analyser('waveform', 2048);
 
   useEffect(() => {

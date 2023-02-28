@@ -1,8 +1,9 @@
 import React, { Fragment, useRef, useState } from 'react';
 import * as Tone from 'tone';
 import { CircleSlider } from 'react-circle-slider';
+import './Lfo.css';
 
-export default function Lfo({ sineTremolo }) {
+export default function Lfo({ type, sineTremolo }) {
   const status = useRef(false);
   const [freqAM, setFreqAM] = useState(0);
   const [statusLFO, setStatusLFO] = useState(false);
@@ -58,13 +59,15 @@ export default function Lfo({ sineTremolo }) {
 
   return (
     <Fragment>
-      <div className="LFO" style={{ display: 'flex', flexDirection: 'column' }}>
-        <button onClick={handleOnOff}>LFO {showStatus()}</button>
+      <div className={`${type}-lfo`} style={{ display: 'flex', flexDirection: 'column' }}>
+        <button onClick={handleOnOff}>
+          {type} LFO {showStatus()}
+        </button>
         <button className="reset" onClick={handleReset} style={{ height: '45px' }}>
           RESET
         </button>
       </div>
-      <div className="LFO-freq">
+      <div className={`${type}-lfo-freq`}>
         <CircleSlider
           size={90}
           knobRadius={7}
@@ -77,7 +80,7 @@ export default function Lfo({ sineTremolo }) {
           showTooltip={true}
         />
       </div>
-      <div className="amp-LFO">AMP LFO</div>
+      <div className={`${type}-amp-wave`}>{type} AMP LFO</div>
     </Fragment>
   );
 }

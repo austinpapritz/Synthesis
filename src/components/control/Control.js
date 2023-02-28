@@ -1,8 +1,9 @@
 import React, { Fragment, useRef, useState } from 'react';
 import * as Tone from 'tone';
 import { CircleSlider } from 'react-circle-slider';
+import './Control.css';
 
-export default function Control({ synth, synthLevel }) {
+export default function Control({ type, synth, synthLevel }) {
   const dialSynthLevel = useRef(-30);
   const playingSynth = useRef(false);
   const freqSynth = useRef(150);
@@ -51,10 +52,13 @@ export default function Control({ synth, synthLevel }) {
 
   return (
     <Fragment>
-      <div className="sine">
-        <button onClick={handlePlay}>{showStatus()}</button>
+      <div className={type}>
+        <button onClick={handlePlay}>
+          {type}
+          {showStatus()}
+        </button>
       </div>
-      <div className="level">
+      <div>
         <CircleSlider
           value={dialSynthLevel.current}
           onChange={handleLevel}
@@ -66,9 +70,9 @@ export default function Control({ synth, synthLevel }) {
           circleWidth={9}
         />
       </div>
-      <div className="sine-level">OSC Level</div>
+      <div className={`${type}-wave-level`}>{`${type} Level`}</div>
       <Fragment>
-        <div className="freq">
+        <div className={`${type}_FREQ`}>
           <CircleSlider
             onChange={handleChangeFreq}
             min={50}
@@ -82,7 +86,7 @@ export default function Control({ synth, synthLevel }) {
             circleWidth={9}
           />
         </div>
-        <div className="sineFreq">OSC Frequency</div>
+        <div className={`${type}-wave-freq`}>{`${type} Frequency`}</div>
       </Fragment>
     </Fragment>
   );

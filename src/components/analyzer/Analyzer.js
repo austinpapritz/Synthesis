@@ -1,7 +1,5 @@
 /* eslint-disable new-cap */
-import AudioMotionAnalyzer from 'audiomotion-analyzer';
-
-export const waveformRender = (analyzer, context, ref) => {
+export const waveformRender = ({ analyzer, context, ref }) => {
   let WaveformCTX;
   WaveformCTX = ref.current.getContext('2d');
   context.connect(analyzer);
