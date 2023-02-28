@@ -7,3 +7,13 @@
   grid-template-rows: 70% 30%;
   height: 100vh;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px 10px;
+  grid-auto-flow: column;
+}
+
+.oscObject {
+}
