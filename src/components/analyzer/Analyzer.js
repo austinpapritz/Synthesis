@@ -1,7 +1,7 @@
 /* eslint-disable new-cap */
-export const waveformRender = ({ analyzer, context, ref }) => {
+export const waveformRender = ({ analyzer, context, reference }) => {
   let WaveformCTX;
-  WaveformCTX = ref.current.getContext('2d');
+  WaveformCTX = reference.current.getContext('2d');
   context.connect(analyzer);
   WaveformLoop();
   function WaveformLoop() {
